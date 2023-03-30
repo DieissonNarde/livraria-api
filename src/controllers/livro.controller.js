@@ -64,10 +64,79 @@ async function updateLivro(req, res, next) {
   }
 }
 
+async function createLivroInfo(req, res, next) {
+  try {
+    let livroInfo = req.body;
+
+    if (!livroInfo.livroId) {
+      throw new Error('Livro ID é obrigatório.');
+    }
+    await LivroService.createLivroInfo(livroInfo);
+    res.end();
+    logger.info(`POST /livro/info - ${JSON.stringify(livroInfo)}`);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function updateLivroInfo(req, res, next) {
+  try {
+    let livroInfo = req.body;
+
+    if (!livroInfo.livroId) {
+      throw new Error('Livro ID é obrigatório.');
+    }
+    await LivroService.updateLivroInfo(livroInfo);
+    res.end();
+    logger.info(`PUT /livro/info - ${JSON.stringify(livroInfo)}`);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function deleteLivroInfo(req, res, next) {
+  try {
+    res.send(await LivroService.deleteLivroInfo(parseInt(req.params.id)));
+    logger.info(`DELETE /livro/info`);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function createAvaliacao(req, res, next) {
+  try {
+    let params = req.body;
+
+    if (!params.livroId || !params.avaliacao) {
+      throw new Error('Livro ID e Avaliacao são obrigatório.');
+    }
+    await LivroService.createAvaliacao(params.avaliacao, params.livroId);
+    res.end();
+    logger.info(`POST /livro/avaliacao - ${JSON.stringify(params)}`);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function deleteAvaliacao(req, res, next) {
+  try {
+    await LivroService.deleteAvaliacao(req.params.id, req.params.index);
+    res.end();
+    logger.info(`DELETE /livro/avaliacao - ${JSON.stringify(params)}`);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   createLivro,
   getLivros,
   getLivro,
   deleteLivro,
   updateLivro,
+  createLivroInfo,
+  updateLivroInfo,
+  deleteLivroInfo,
+  createAvaliacao,
+  deleteAvaliacao,
 };
