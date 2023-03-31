@@ -13,7 +13,7 @@ async function deleteAutor(id) {
 }
 
 async function getAutores() {
-  return await AutorRepository.getAnimais();
+  return await AutorRepository.getAutores();
 }
 
 async function getAutor(id) {

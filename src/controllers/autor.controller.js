@@ -16,7 +16,7 @@ async function createAutor(req, res, next) {
 
 async function getAutores(req, res, next) {
   try {
-    res.send(await AutorService.getAutors());
+    res.send(await AutorService.getAutores());
     logger.info('GET /autor');
   } catch (err) {
     next(err);

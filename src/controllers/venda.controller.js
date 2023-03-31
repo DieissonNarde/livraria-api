@@ -36,7 +36,6 @@ async function getVenda(req, res, next) {
 
 async function deleteVenda(req, res, next) {
   try {
-    Endereco;
     await VendaService.deleteVenda(req.params.id);
     res.end();
     logger.info('DELETE /venda');

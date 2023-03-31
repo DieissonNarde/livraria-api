@@ -14,7 +14,7 @@ async function deleteLivro(id) {
 }
 
 async function getLivros() {
-  return await LivroRepository.getAnimais();
+  return await LivroRepository.getLivros();
 }
 
 async function getLivro(id) {

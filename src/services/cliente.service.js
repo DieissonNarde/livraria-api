@@ -13,7 +13,7 @@ async function deleteCliente(id) {
 }
 
 async function getClientes() {
-  return await ClienteRepository.getAnimais();
+  return await ClienteRepository.getClientes();
 }
 
 async function getCliente(id) {

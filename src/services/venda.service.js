@@ -13,7 +13,7 @@ async function deleteVenda(id) {
 }
 
 async function getVendas() {
-  return await VendaRepository.getAnimais();
+  return await VendaRepository.getVendas();
 }
 
 async function getVenda(id) {
