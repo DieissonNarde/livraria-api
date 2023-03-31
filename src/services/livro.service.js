@@ -1,5 +1,6 @@
 import LivroRepository from '../repositories/livro.repository.js';
 import LivroInfoRepository from '../repositories/livroInfo.repository.js';
+import VendaRepository from '../repositories/venda.repository.js';
 
 async function createLivro(livro) {
   return await LivroRepository.insertLivro(livro);
@@ -10,6 +11,11 @@ async function updateLivro(livro) {
 }
 
 async function deleteLivro(id) {
+  const vendas = await VendaRepository.getVendasPorLivro(id);
+  if (vendas) {
+    throw new Error('O livro possui vendas');
+  }
+
   await LivroRepository.deleteLivro(id);
 }
 

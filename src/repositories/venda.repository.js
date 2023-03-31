@@ -1,5 +1,6 @@
 import Venda from '../models/venda.model.js';
 import Cliente from '../models/cliente.model.js';
+import Livro from '../models/livro.model.js';
 
 async function insertVenda(venda) {
   try {
@@ -68,11 +69,29 @@ async function getVendasPorCliente(clienteId) {
   }
 }
 
+async function getVendasPorLivro(livroId) {
+  try {
+    return await Venda.findAll({
+      where: {
+        livroId,
+      },
+      include: [
+        {
+          model: Livro,
+        },
+      ],
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
 export default {
   insertVenda,
   getVendas,
   getVenda,
   getVendasPorCliente,
+  getVendasPorLivro,
   updateVenda,
   deleteVenda,
 };
