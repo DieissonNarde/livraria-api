@@ -19,7 +19,10 @@ async function deleteLivro(id) {
   await LivroRepository.deleteLivro(id);
 }
 
-async function getLivros() {
+async function getLivros(autorId) {
+  if (autorId) {
+    return await LivroRepository.getLivrosPorAutor(autorId);
+  }
   return await LivroRepository.getLivros();
 }
 
