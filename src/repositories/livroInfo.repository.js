@@ -1,4 +1,4 @@
-import { connect } from './mongo.db.js';
+import { connect } from './mongodb.js';
 import LivroInfoSchema from '../schemas/livroInfo.schema.js';
 
 async function createLivroInfo(livroInfo) {
