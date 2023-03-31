@@ -38,7 +38,11 @@ async function deleteVenda(id) {
   await VendaRepository.deleteVenda(id);
 }
 
-async function getVendas() {
+async function getVendas(clienteId) {
+  if (clienteId) {
+    return await VendaRepository.getVendasPorCliente(clienteId);
+  }
+
   return await VendaRepository.getVendas();
 }
 
