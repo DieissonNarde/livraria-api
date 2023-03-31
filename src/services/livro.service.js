@@ -24,7 +24,9 @@ async function getLivros() {
 }
 
 async function getLivro(id) {
-  return await LivroRepository.getLivro(id);
+  const livro = await LivroRepository.getLivro(id);
+  const livroInfo = await LivroInfoRepository.getLivroInfo(id);
+  return { livro, livroInfo };
 }
 
 async function createLivroInfo(livroInfo) {

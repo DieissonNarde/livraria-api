@@ -66,6 +66,7 @@ export default {
   createLivroInfo,
   updateLivroInfo,
   deleteLivroInfo,
+  getLivroInfo,
   createAvaliacao,
   deleteAvaliacao,
 };
