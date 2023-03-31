@@ -45,16 +45,10 @@ async function deleteLivro(req, res, next) {
 async function updateLivro(req, res, next) {
   try {
     let livro = req.body;
-    if (
-      !livro.livroId ||
-      !livro.nome ||
-      !livro.valor ||
-      !livro.estoque ||
-      !livro.autorId
-    ) {
-      throw new Error(
-        'ID, Nome, Valor, Estoque e Id de Autor são obrigatórios.'
-      );
+    if (livro.nome || livro.autorId) {
+      throw new Error('Valores não permitidos alterar.');
+    } else if (!livro.livroId || !livro.valor || !livro.estoque) {
+      throw new Error('ID, Valor e Estoque são obrigatórios.');
     }
     livro = await LivroService.updateLivro(livro);
     res.send(livro);
