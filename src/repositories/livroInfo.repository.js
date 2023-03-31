@@ -32,6 +32,16 @@ async function deleteLivroInfo(livroId) {
   }
 }
 
+async function getLivroInfo(livroId) {
+  try {
+    const mongoose = await connect();
+    const LivroInfo = mongoose.model('LivroInfo', LivroInfoSchema);
+    return await LivroInfo.findOne({ livroId }).exec();
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function createAvaliacao(avaliacao, livroId) {
   try {
     const livroInfo = await getLivroInfo(livroId);

@@ -11,7 +11,7 @@ router.put('/', LivroController.updateLivro);
 router.post('/info', LivroController.createLivroInfo);
 router.put('/info', LivroController.updateLivroInfo);
 router.delete('/info/:id', LivroController.deleteLivroInfo);
-router.post('/avaliacao', LivroController.createAvaliacao);
+router.post('/:id/avaliacao', LivroController.createAvaliacao);
 router.delete('/:id/avaliacao/:index', LivroController.deleteAvaliacao);
 
 export default router;

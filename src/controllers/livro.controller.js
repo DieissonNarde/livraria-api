@@ -107,10 +107,10 @@ async function createAvaliacao(req, res, next) {
   try {
     let params = req.body;
 
-    if (!params.livroId || !params.avaliacao) {
-      throw new Error('Livro ID e Avaliacao são obrigatório.');
+    if (!params.nome || !params.nota || !params.avaliacao) {
+      throw new Error('Nome, Nota e Avaliacao são obrigatório.');
     }
-    await LivroService.createAvaliacao(params.avaliacao, params.livroId);
+    await LivroService.createAvaliacao(params, req.params.id);
     res.end();
     logger.info(`POST /livro/avaliacao - ${JSON.stringify(params)}`);
   } catch (err) {
