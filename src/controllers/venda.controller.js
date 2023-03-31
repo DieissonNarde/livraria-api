@@ -3,7 +3,7 @@ import VendaService from '../services/venda.service.js';
 async function createVenda(req, res, next) {
   try {
     let venda = req.body;
-    if (!venda.valor || !venda.data || !venda.clienteId || !venda.livroId) {
+    if (!venda.clienteId || !venda.livroId) {
       throw new Error(
         'Valor, Data, ID de Cliente e ID de Livro são obrigatórios.'
       );
