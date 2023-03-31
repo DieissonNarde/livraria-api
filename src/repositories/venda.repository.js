@@ -1,4 +1,5 @@
 import Venda from '../models/venda.model.js';
+import Cliente from '../models/cliente.model.js';
 
 async function insertVenda(venda) {
   try {
@@ -50,10 +51,28 @@ async function getVenda(id) {
   }
 }
 
+async function getVendasPorCliente(clienteId) {
+  try {
+    return await Venda.findAll({
+      where: {
+        clienteId,
+      },
+      include: [
+        {
+          model: Cliente,
+        },
+      ],
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
 export default {
   insertVenda,
   getVendas,
   getVenda,
+  getVendasPorCliente,
   updateVenda,
   deleteVenda,
 };
