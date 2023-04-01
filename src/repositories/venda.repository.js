@@ -1,6 +1,7 @@
 import Venda from '../models/venda.model.js';
 import Cliente from '../models/cliente.model.js';
 import Livro from '../models/livro.model.js';
+import Autor from '../models/autor.model.js';
 
 async function insertVenda(venda) {
   try {

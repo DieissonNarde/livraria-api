@@ -38,11 +38,21 @@ async function deleteVenda(id) {
   await VendaRepository.deleteVenda(id);
 }
 
-async function getVendas(clienteId, livroId) {
+async function getVendas(clienteId, livroId, autorId) {
   if (clienteId) {
     return await VendaRepository.getVendasPorCliente(clienteId);
   } else if (livroId) {
     return await VendaRepository.getVendasPorLivro(livroId);
+  } else if (autorId) {
+    let vendasPorAutor = [];
+    const livros = await LivroRepository.getLivrosPorAutor(autorId);
+    console.log('livros ', livros);
+    for (let i = 0; i < livros.length; i++) {
+      vendasPorAutor.push(
+        await VendaRepository.getVendasPorLivro(livros[i].livroId)
+      );
+    }
+    return vendasPorAutor;
   }
 
   return await VendaRepository.getVendas();
